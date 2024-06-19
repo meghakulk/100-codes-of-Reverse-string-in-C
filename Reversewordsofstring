@@ -1,0 +1,31 @@
+//OUTPUT OF THE PROGRAM : INPUT: hello world
+                          OUTPUT:dlorw olleh
+
+#include<stdio.h>
+#include<string.h>
+
+//function to return a reverse of string
+void reversestring(char *str)
+{
+  int i=0,j;
+  char temp;
+  j = strlen(str)-1; //To correctly point to the last character
+  while(i<j)
+    {
+    temp =str[i];           //Swapping the words of the string
+    str[i]=str[j];
+    str[j]=temp;
+    i++;                    //Incrementing the word count from begining
+    j--                     //decrementing the word count from last
+    }
+  
+  //Main function to print the value
+  int main()
+  {
+    char str[100];  //Need to include buffer size otherwise this wont print output correctly
+    printf("Enter the string :");
+    scanf("%[^\n]",str);                          //Need to add selective scanf becoz this reads the entire line of input includong space until newline is found
+    reversestring(str);
+    printf("The reversed string:%s",str);
+    return 0;
+}
