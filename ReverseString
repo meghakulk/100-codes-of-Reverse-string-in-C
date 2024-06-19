@@ -1,0 +1,59 @@
+//OUTPUT OF THE PROGRAM : INPUT : HELLO WORLD
+                          OUTPUT : WORLD HELLO
+#include<stdio.h>
+#include<string.h>
+//First need to reverse string and later words
+void reversestring(char *str)
+{
+    // Function to reverse a string
+    int i = 0, j = strlen(str) - 1;
+    while (i < j)
+    {
+        char temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        i++;
+        j--;
+    }
+}
+void reversewords(char *str)
+{
+// Function to reverse the order of words in a string
+// Reverse the entire string first
+reversestring(str);
+int start = 0;
+int end = 0;
+int length = strlen(str);
+while(end <= length)
+{
+if(str[end] == ' '|| str[end] == '\0')
+{
+//If found a space reverse a word
+int wordlen = end - start;
+int i =start;
+int j = end-1;
+while(i < j)
+{
+char temp = str[i];
+str[i] = str[j];
+str[j] = temp;
+i++;
+j--;
+}
+// Move to the next word
+            start = end + 1;
+        }
+        end++;
+    }
+}
+int main()
+{
+    char str[100]; // Increased buffer size for input
+    printf("Enter the string: ");
+    scanf(" %[^\n]", str); // Read until newline is encountered
+
+    reverse_words(str);
+    printf("The reversed string: %s\n", str);
+
+    return 0;
+}
