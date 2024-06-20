@@ -1,0 +1,57 @@
+OUTPUT OF THE PROGRAM: INPUT : Hello World
+                       output: HeLlO WoRlD
+#include <stdio.h>
+#include <string.h>
+
+// Function to check if a character is a letter
+int is_letter(char c) {
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
+// Function to check if a character is a space
+int is_space(char c) {
+    return c == ' ';
+}
+
+// Function to convert a character to uppercase
+char uppercase(char c) {
+    if (c >= 'a' && c <= 'z') {
+        return c - ('a' - 'A');
+    }
+    return c;
+}
+
+// Function to convert a character to lowercase
+char lowercase(char c) {
+    if (c >= 'A' && c <= 'Z') {
+        return c + ('a' - 'A');
+    }
+    return c;
+}
+
+// Function to convert string with alternating cases
+void alternate_case(char *str) {
+    int toggle = 1; // Flag to determine case; start with uppercase
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (is_letter(str[i])) {  // Check if the character is a letter
+            if (toggle) {
+                str[i] = uppercase(str[i]);
+            } else {
+                str[i] = lowercase(str[i]);
+            }
+            toggle = !toggle;  // Switch the flag
+        } else if (is_space(str[i])) {
+            toggle = 1;  // Reset the flag after each space
+        }
+    }
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]", str);
+    alternate_case(str);
+    printf("The alternate cases of the string is: %s\n", str);
+    return 0;
+}
