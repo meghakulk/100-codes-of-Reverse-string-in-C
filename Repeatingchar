@@ -1,0 +1,43 @@
+OUTPUT OF THE PROGRAM : I/P = good Morning
+                        O/P =on
+#include<stdio.h>
+#include<string.h>
+
+void repeatingchar(char *str)
+{
+    int count[256] = {0};
+    int n = strlen(str);
+    //To count the occurences of the character
+    for (int i = 0;i<n;i++){
+    count[(unsigned char)str[i]]++;
+    }
+    int found = 1;
+    for(int i=0;i<n;i++){
+         if(count[(unsigned char)str[i]] > 1){
+     // Print the character only the first time it's found
+       if (count[(unsigned char)str[i]] != -1) {
+                printf("%c ", str[i]);
+                count[(unsigned char)str[i]] = -1; // Mark character as printed
+                found = 1; // Set found to 1 when a repeating character is found
+         }
+         }
+}
+if(found == 0)
+{
+    printf("There are no  repeating character\n");
+    
+}
+printf("\n");
+}
+int main()
+{
+    char str[100];
+
+    printf("Enter a string: ");
+    scanf("%[^\n]", str);
+
+    repeatingchar(str);
+
+    return 0;
+    
+}
