@@ -1,5 +1,5 @@
 OUTPUT OF THE PROGRAM:INPUT : GOOD MORNING
-                      OUTPUT :DMRI
+                      OUTPUT :DMRI 
 include <stdio.h>
 #include <string.h>
 
