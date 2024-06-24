@@ -1,0 +1,48 @@
+OUTPUT OF THE PROGRAM : hello,HellO
+#include <stdio.h>
+#include<string.h>
+
+//Inline function to convert a char to uppercase
+char touppercase(char ch){
+return (ch >= 'a'&& ch <= 'z') ? ch - ('a'-'A') : ch;
+}
+void convertfirstandlast(char *str)
+{
+int start = -1;                         // Position of start from current word
+for(int i =0; str[i]!=0;i++)
+{
+if(str[i] != ' ' && str[i] != '\t'&& str[i] !='\n')
+{
+if(start == -1)                          //if it is First character of the word 
+{
+start = i;
+}
+}
+else {
+if(start != -1)                         //If we have reached end of the word
+{
+str[start] =touppercase(str[start]);       //to capitalize the first word
+str[i-1]= touppercase(str[i-1]);           //to capitalize the last word
+start = -1;                            //to reset to start next word after space
+}
+}
+}
+if(start != -1)                       //handle the last word if the string doesnt end with the space
+{
+str[start] = touppercase(str[start]);
+str[strlen(str)-1] = touppercase(str[strlen(str)-1]);
+}
+}
+int main()
+{
+char str[100];
+printf("Enter the string:");
+scanf("%[^\n]",str);
+
+convertfirstandlast(str);
+printf("The Modified String :%s",str);
+return 0;
+}
+
+
+
