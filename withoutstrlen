@@ -1,0 +1,24 @@
+OUTPUT OF THE PROGRAM : I/P : Hello World
+                        O/p : 11
+#include<stdio.h>
+#include<string.h>
+
+int withoutlibrary(char *str)
+{
+    int length =0;
+    while(str[length] != '\0')
+    {
+         length++;
+    }
+    return length;
+}
+
+int main()
+{
+    char str[100];
+    printf("Enter the string:");
+    scanf("%[^\n]",str);
+    int res = withoutlibrary(str);
+    printf("The result : %d",res);
+    return 0;
+}
