@@ -1,0 +1,29 @@
+PROBLEM STATEMENT: Print sum of weight of the string,a weight of character is definrd as the ascii value of corresponding character
+#include <stdio.h>
+
+int calculate_string_weight(char *str)
+{
+    int sum =0;
+    while(*str != '\0')
+    {
+        sum = sum + *str;
+        *str++;
+    }
+    return sum;
+}
+
+int main()
+{
+    char str[]=" ";
+    printf("Enter the string:");
+    scanf("%s",str);
+    
+    int result =(int)calculate_string_weight(str);
+    printf("The resultant string weight is : %d",result);
+    
+    return 0;
+}
+OUTPUT OF THE PROGRAM:Enter the string:123
+                      The resultant string weight is : 150
+                      Enter the string:afgh
+                      The resultant string weight is : 406
